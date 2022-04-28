@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <title>Survey form</title>
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+            <h1 class="title" id="title">Survey Form</h1>
+            <p class="description" id="description">
+                Thank you for taking the time to help us improve the platform
+            </p>
+        </div>
+        <div class="form">
+            <form action="." method="post" class="survey-form" id="survey-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name" id="name-label">Name </label><input type="text" name="user-name" id="name"
+                        placeholder="Enter your name" required />
+                </div>
+                <div class="form-group">
+                    <label for="email" id="email-label">Email </label><input type="email" name="user-email" id="email"
+                        placeholder="Enter your email" required />
+                </div>
+                <div class="form-group">
+                    <label for="number" id="number-label">Age </label><input type="number" name="user-age" id="number" min="0" max="200"
+                        placeholder="Age" />
+                </div>
+                <div class="form-group">
+                    <p>Which option best describes your current role?</p>
+                    <select name="role" id="dropdown" required>
+                        <option disabled selected value>Select current role</option>
+                        <option value="student">Student</option>
+                        <option value="full-time-job">Full Time Job</option>
+                        <option value="full-time-learner">Full Time Learner</option>
+                        <option value="prefer-not-say">Prefer not to say</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="">Any comments or suggestions?</label>
+                    <textarea name="textarea" rows="10" cols="50">Enter your comment here...</textarea>
+                </div>
+                <div class="form-group">
+                    <button class="button-submit" type="submit" id="submit">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
